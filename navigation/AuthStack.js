@@ -3,13 +3,19 @@ import {View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import SignupScreen from '../screens/SignupScreen';
 import LoginScreen from '../screens/LoginScreen';
-
+import { GoogleSignin } from '@react-native-community/google-signin';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
+
 
 const Stack = createStackNavigator();
 
 const AuthStack = () => {
-
+  useEffect(()=> {
+    GoogleSignin.configure({
+      webClientId:'656293500577-b9b798c5ii16e9b73gf06scldo0evrdd.apps.googleusercontent.com'
+    });
+  });
   return (
     <Stack.Navigator initialRouteName="Login">
       <Stack.Screen

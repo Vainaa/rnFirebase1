@@ -2,6 +2,7 @@ import React, {useContext, useState} from 'react';
 import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
+import SocialButton from '../components/SocialButton';
 
 // Other imports
 import { AuthContext } from '../navigation/AuthProvider';
@@ -10,7 +11,7 @@ import { AuthContext } from '../navigation/AuthProvider';
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const {login} = useContext(AuthContext);
+  const {login, googleLogin } = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
@@ -46,7 +47,13 @@ const LoginScreen = ({navigation}) => {
       <TouchableOpacity style={styles.forgotButton} onPress={() => {}}>
         <Text style={styles.navButtonText}>Forgot Password?</Text>
       </TouchableOpacity>
-
+      <SocialButton
+        buttonTitle="Sign in with Google"
+        btnType="google"
+        color="#de4d41"
+        backgroundColor="#f5e7ea"
+        onPress={()=>googleLogin()}
+        />
       <TouchableOpacity
         style={styles.forgotButton}
         onPress={() => navigation.navigate('Signup')}>
